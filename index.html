@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./src/output.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <header class="bg-blue-600 text-white p-6 text-center">
+        <h1 class="text-3xl font-bold">Welcome to Tailwind CSS</h1>
+    </header>
+    <main class="p-6">
+        <p class="text-lg">
+            This is a sample webpage styled with <span class="text-blue-500 font-semibold">Tailwind CSS</span>.
+        </p>
+        <button class="mt-4 px-4 py-2  btn bg-green-500 text-white rounded hover:bg-green-600 transition">
+            Click Me
+        </button>
+    </main>
+    <footer class="bg-gray-800 text-white min-w-screen-sm p-4 text-center">
+        <p class="text-sm">&COPY;; 2024 Tailwind Sample Project</p>
+    </footer>
+</body>
+<script>
+        let btn=document.querySelector('.btn');
+        btn.addEventListener('click',()=>{
+            alert('what is wrong...?')
+        })
+</script>
+</html>

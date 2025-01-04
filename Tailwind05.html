@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar</title>
+   <link rel="stylesheet" href="./src/output.css">
+</head>
+
+<body class="bg-gray-100 ">
+    <nav class="bg-white shadow-lg sticky-lg-top top-0 left-0 w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 ">
+                    <img class="h-10 w-10 rounded-full object-cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSDKn3vA2YUbXzN0ZC3gALWJ08gJN-Drl15w&s" alt="Logo">
+                </div>
+
+                <!-- Hamburger Menu -->
+                <div class="flex sm:hidden">
+                    <button id="menu-toggle" class="bar flex sm:hidden text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Navigation Links -->
+                <div id="menu" class="hidden sm:flex sm:items-center sm:space-x-8">
+                    <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Services</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                </div>
+
+                <!-- Sign-in Button -->
+                <div class="hidden sm:flex sm:items-center">
+                    <button class="btn_signin bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700">Sign in</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class=" sm:hidden hidden bg-white shadow-lg">
+            <a href="#" class="block text-gray-700 hover:text-blue-600 px-4 py-2">Home</a>
+            <a href="#" class="block text-gray-700 hover:text-blue-600 px-4 py-2">About</a>
+            <a href="#" class="block text-gray-700 hover:text-blue-600 px-4 py-2">Services</a>
+            <a href="#" class="block text-gray-700 hover:text-blue-600 px-4 py-2">Contact</a>
+            <div class="border-t border-gray-200 mt-2">
+                <button class="btn_signin w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 mt-2">Sign in</button>
+            </div>
+        </div>
+    </nav>
+    <div class="grid place-items-center mt-5">
+        <form action="#" id="form" class="hidden sm:w-96 w-72 shadow-xl p-7 rounded-md  h-auto bg-white">
+            <h1 class="text-center font-bold font-sans uppercase mt-3 underline">Apply Position</h1>
+            <button class="cancel_btn text-black absolute right-0 top-3 font-bold text-lg">x</button>
+            <hr class="mt-3">
+            <label for="name" class="block text-base mb-3 mt-2">Enter name</label>
+            <input type="text" id="name" name="name" class="w-full p-2 border outline-blue-500" placeholder="Name">
+            <label for="gender" class="block text-base mb-3 mt-2">Enter gender</label>
+            <select name="gender" name="gender" id="gender" class="w-full p-2 border outline-blue-500">
+                <option value="">Select gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+            <label for="age" class="block text-base mb-3 mt-2">Enter age</label>
+            <input type="text" id="age" name="age" class="w-full p-2 border outline-blue-500" placeholder='Age' required>
+            <label class="block text-base mb-3 mt-2">Family Circumstance</label>
+            <input type="radio" name="fam_status" id="Single" value="Single">
+            <label for="Single">Single</label>
+            <input type="radio" name="fam_status" id="Married" value="Married" class="ms-4">
+            <label for="Married">Married</label>
+            <label for="cur_locate" class="text-base block mb-3 mt-2">Current Location</label>
+            <textarea name="descrip_locate" id="cur_locate" class="w-full h-24 outline-sky-500 border p-2"></textarea>
+            <button type="submit" class="btn_submit rounded-lg mt-5 px-4 py-2 bg-green-400 hover:bg-green-600">Submit</button>
+        </form>
+        <div class=" w-full grid grid-cols-1 place-items-center ">
+            <table class="tab hidden table-fixed  min-w-[90%] sm:w-[80%]  md:w-[70%]  border-collapse  ">
+                <thead>
+                   <tr class="bg-black text-lime-50 text-center ">
+                    
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Age</th>
+                        <th>Family Circumstance</th>
+                        <th>Current Locationg</th>
+                      
+                   </tr>
+                <tbody class="storeData">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+<script>
+       const menuToggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+const signInButtons = document.querySelectorAll('.btn_signin');
+const form = document.getElementById('form');
+const cancelBtn = document.querySelector('.cancel_btn');
+const storeData = document.querySelector('.storeData');
+const table = document.querySelector('.tab');
+const formData = [];
+
+// Toggle mobile menu visibility
+menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+});
+
+// Show form when Sign In buttons are clicked
+signInButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        form.classList.toggle('hidden');
+       
+    });
+});
+
+// Close form when cancel button is clicked
+cancelBtn.addEventListener('click', () => {
+    form.classList.add('hidden');
+});
+
+// Handle form submission
+const submitButton = document.querySelector('.btn_submit');
+submitButton.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const age = document.getElementById('age').value.trim();
+    const gender = document.getElementById('gender').value;
+    const famStatus = document.querySelector('input[name="fam_status"]:checked')?.value || '';
+    const currentLocate = document.getElementById('cur_locate').value.trim();
+
+    // Validate inputs
+    if (!name || !age || !gender || !famStatus || !currentLocate) {
+        alert('Please fill out all the fields.');
+        return;
+    }
+
+    // Add data to array
+    formData.push({
+        Name: name,
+        Age: age,
+        Gender: gender,
+        FamilyStatus: famStatus,
+        CurrentLocation: currentLocate
+    });
+
+    // Update table
+    let rows = '';
+    formData.forEach(fd => {
+        rows += `
+            <tr class="text-center border-2">
+                <td>${fd.Name}</td>
+                <td>${fd.Gender}</td>
+                <td>${fd.Age}</td>
+                <td>${fd.FamilyStatus}</td>
+                <td>${fd.CurrentLocation}</td>
+            </tr>
+        `;
+    });
+    storeData.innerHTML = rows;
+
+    // Show table and hide form
+    form.classList.add('hidden');
+    table.classList.remove('hidden');
+
+    // Reset form
+    form.reset();
+});
+
+</script>
+</html>
